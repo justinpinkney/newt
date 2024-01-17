@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Newt(ab) Links</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="search-box" placeholder="Search...">
+        <button id="clear-search" onclick="clearSearch()">X</button>
+    </div>
+    <!-- Rest of your HTML content -->
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <div class="container">
+        {% for category, subcategories in content.items() %}
+            <div class="category">
+                <h2>{{ category }}</h2>
+                {% for subcategory, items in subcategories.items() %}
+                    <div class="subcategory">
+                        <h3>{{ subcategory }}</h3>
+                        {% if items is mapping %}
+                            {% for item_name, item_url in items.items() %}
+                                <a class="link-box" href="{{ item_url }}" target="_blank">{{ item_name }}</a>
+                            {% endfor %}
+                        {% else %}
+                            <a class="link-box" href="{{ items }}" target="_blank">{{ subcategory }}</a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
