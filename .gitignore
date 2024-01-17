@@ -1,2 +1,3 @@
 .venv/
 links.yaml
+__pycache__/
