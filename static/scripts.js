@@ -11,8 +11,18 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === "Escape") { // Clear search on ESC key.
             clearSearch();
         }
-    });
 
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Prevent form submission
+            var firstResult = document.getElementsByClassName('link-box')[0];
+            console.log(firstResult);
+            if (firstResult) {
+                // Do something with the first result, e.g., navigate to its link
+                window.location.href = firstResult.href;
+            }
+        }
+
+    });
     // Function to clear the search box and reset the link visibility.
     window.clearSearch = function() {
         searchBox.value = '';

@@ -1,3 +1,6 @@
 flask
 pyyaml
 gunicorn
+getgist
+python-dotenv
+getgist
